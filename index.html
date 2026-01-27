@@ -588,7 +588,7 @@
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">ركنة 230</h3>
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2"> ركنة بجوانب خشبية 230 سم</h3>
                         <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">ركنة 230 في 230 سم +
                             طاولة شاي</p>
 
@@ -1101,17 +1101,7 @@
     </footer>
 
     <script>
-        // Use a single object to store the model selection details
-        let selectedModel = {
-            name: '', // e.g., 'model1', 'model2', 'model3'
-            pieces: 0,
-            price: 0,
-            basePrice: 0,
-            hasGlass: false,
-            glassPrice: 1300
-        };
-
-        // Product 1 selections (now for the ONE selected model)
+        // Product 1 selections (Global selection for colors)
         let product1MetalColor = '';
         let product1MetalColorName = '';
         let product1PillowColor = '';
@@ -1119,31 +1109,14 @@
 
 
         function selectCategory(category, element, pieces, basePrice) {
-            // Deselect all cards first
-            document.querySelectorAll('.category-card').forEach(card => {
-                card.classList.remove('selected');
-            });
+            // Toggle selection state
+            element.classList.toggle('selected');
 
-            // Select the current card
-            element.classList.add('selected');
-
-            // Check if glass is selected
-            const glassCheckbox = element.querySelector('.glass-checkbox');
-            const hasGlass = glassCheckbox ? glassCheckbox.checked : false;
-
-            // Get glass price from attribute, default to 1300
-            let glassPrice = 1300;
-            if (glassCheckbox && glassCheckbox.dataset.glassPrice) {
-                glassPrice = parseInt(glassCheckbox.dataset.glassPrice);
-            }
-
-            // Update the selected model state
-            selectedModel.name = category;
-            selectedModel.pieces = pieces;
-            selectedModel.basePrice = basePrice;
-            selectedModel.hasGlass = hasGlass;
-            selectedModel.glassPrice = glassPrice;
-            selectedModel.price = basePrice + (hasGlass ? glassPrice : 0);
+            // Store metadata on the element so we can read it later without parsing HTML args
+            // We only need to set this once, but setting it every click is harmless and ensures it's there
+            element.dataset.name = category;
+            element.dataset.pieces = pieces;
+            element.dataset.basePrice = basePrice;
 
             updateTotalBill();
         }
@@ -1170,9 +1143,6 @@
 
                 // If this card is currently selected, align the global state immediately
                 if (cardBody.classList.contains('selected')) {
-                    selectedModel.hasGlass = hasGlass;
-                    selectedModel.glassPrice = glassPrice;
-                    selectedModel.price = finalPrice;
                     updateTotalBill();
                 }
             }
@@ -1213,8 +1183,29 @@
         }
 
         function updateTotalBill() {
-            const numPieces = selectedModel.pieces;
-            const productsPrice = selectedModel.price;
+            let totalPieces = 0;
+            let productsPrice = 0;
+
+            const selectedCards = document.querySelectorAll('.category-card.selected');
+
+            selectedCards.forEach(card => {
+                const pieces = parseInt(card.dataset.pieces || 0);
+                const basePrice = parseInt(card.dataset.basePrice || 0);
+
+                // Check glass
+                const glassCheckbox = card.querySelector('.glass-checkbox');
+                const hasGlass = glassCheckbox ? glassCheckbox.checked : false;
+                let glassPrice = 1300;
+                if (glassCheckbox && glassCheckbox.dataset.glassPrice) {
+                    glassPrice = parseInt(glassCheckbox.dataset.glassPrice);
+                }
+
+                const itemPrice = basePrice + (hasGlass ? glassPrice : 0);
+
+                totalPieces += pieces;
+                productsPrice += itemPrice;
+            });
+
             const city = document.getElementById('city').value;
 
             let shippingCost = 0;
@@ -1234,11 +1225,13 @@
 
             const totalPrice = productsPrice + shippingCost;
 
-            document.getElementById('productCount').textContent = numPieces;
+            document.getElementById('productCount').textContent = totalPieces;
             document.getElementById('productsPrice').textContent = productsPrice.toLocaleString() + ' جنيه';
             document.getElementById('shippingCost').textContent = shippingCost.toLocaleString() + ' جنيه';
             document.getElementById('totalPrice').textContent = totalPrice.toLocaleString() + ' جنيه';
             document.getElementById('buttonText').textContent = `تأكيد الطلب - ${totalPrice.toLocaleString()} جنيه`;
+
+            return { totalPieces, productsPrice, shippingCost, totalPrice };
         }
 
         document.getElementById('orderForm').addEventListener('submit', function (e) {
@@ -1250,39 +1243,27 @@
             const city = document.getElementById('city').value;
             const fullAddress = document.getElementById('fullAddress').value;
 
+            // Recalculate totals to be safe
+            const totals = updateTotalBill();
+            const numPieces = totals.totalPieces;
+            const productsPrice = totals.productsPrice;
+            const shippingCost = totals.shippingCost;
+            const totalPrice = totals.totalPrice;
+
             // Validation
-            if (selectedModel.pieces === 0) {
-                alert('⚠️ الرجاء اختيار الموديل (عدد القطع) أولاً');
+            if (numPieces === 0) {
+                alert('⚠️ الرجاء اختيار منتج واحد على الأقل');
                 return;
             }
 
-
-
-            // Calculate totals - يجب إعادة حساب رسوم الشحن هنا أيضاً لضمان الدقة
-            const numPieces = selectedModel.pieces;
-            const productsPrice = selectedModel.price;
-
-            let shippingCost = 0;
-            const tier2Cities = ['الإسكندرية', 'الدقهلية', 'البحيرة', 'الشرقية', 'القليوبية', 'كفر الشيخ', 'الغربية', 'المنوفية', 'الفيوم'];
-            const tier3Cities = ['بني سويف', 'المنيا', 'أسيوط', 'سوهاج', 'قنا', 'الأقصر', 'أسوان', 'البحر الأحمر', 'جنوب سيناء', 'بورسعيد', 'دمياط', 'الإسماعيلية', 'السويس'];
-
-            if (city === 'القاهرة' || city === 'الجيزة') {
-                shippingCost = 0;
-            } else if (tier2Cities.includes(city)) {
-                shippingCost = 500;
-            } else if (tier3Cities.includes(city)) {
-                shippingCost = 1500;
-            }
-
-            const totalPrice = productsPrice + shippingCost;
-
-
-            // Get selected model name for the message
-            const modelText = document.querySelector(`.category-card.selected h3`).textContent;
-
+            // Gather all selected products for tracking
+            const contentNames = [];
+            document.querySelectorAll('.category-card.selected').forEach(card => {
+                contentNames.push(card.dataset.name);
+            });
 
             fbq('track', 'InitiateCheckout', {
-                content_name: selectedModel.name,
+                content_name: contentNames.join(', '),
                 content_category: 'furniture',
                 value: totalPrice,
                 currency: 'EGP',
@@ -1294,19 +1275,41 @@
             message += ` *طلب جديد*\n`;
             message += `━━━━━━━━━━━━━━━━━\n\n`;
 
-            // Product Details (now only one set of details)
             message += ` *تفاصيل الطلب:*\n`;
-            message += ` • الموديل: ${modelText} (${selectedModel.name})\n`;
 
-            // إضافة تفاصيل الألوان إذا تم اختيارها
-            if (product1MetalColorName) {
-                message += ` • لون الإطار المعدني: ${product1MetalColorName}\n`;
-            }
-            if (product1PillowColorName) {
-                message += ` • لون القماش والوسائد: ${product1PillowColorName}\n`;
-            }
-            if (selectedModel.hasGlass) {
-                message += ` • اضافة: زجاج للطاولة (+${selectedModel.glassPrice.toLocaleString()} جنيه)\n`;
+            // Iterate over selected cards to list them
+            const selectedCards = document.querySelectorAll('.category-card.selected');
+            selectedCards.forEach((card, index) => {
+                const name = card.dataset.name;
+                const basePrice = parseInt(card.dataset.basePrice || 0);
+                const modelTextElement = card.querySelector('h3');
+                const modelText = modelTextElement ? modelTextElement.textContent : name;
+
+                // Check glass
+                const glassCheckbox = card.querySelector('.glass-checkbox');
+                const hasGlass = glassCheckbox ? glassCheckbox.checked : false;
+                let glassPrice = 1300;
+                if (glassCheckbox && glassCheckbox.dataset.glassPrice) {
+                    glassPrice = parseInt(glassCheckbox.dataset.glassPrice);
+                }
+
+                message += ` ${index + 1}. ${modelText} (${name})\n`;
+                if (hasGlass) {
+                    message += `    - مع زجاج (+${glassPrice.toLocaleString()} جنيه)\n`;
+                }
+            });
+            message += `\n`;
+
+            // إضافة تفاصيل الألوان إذا تم اختيارها (Global colors)
+            if (product1MetalColorName || product1PillowColorName) {
+                message += ` *تخصيص الألوان (للمنتجات القابلة للتخصيص):*\n`;
+                if (product1MetalColorName) {
+                    message += ` • لون الإطار المعدني: ${product1MetalColorName}\n`;
+                }
+                if (product1PillowColorName) {
+                    message += ` • لون القماش والوسائد: ${product1PillowColorName}\n`;
+                }
+                message += `\n`;
             }
 
             message += ` *بيانات العميل:*\n`;
@@ -1321,7 +1324,7 @@
             message += ` • العنوان التفصيلي: ${fullAddress}\n\n`;
 
             message += ` *الفاتورة:*\n`;
-            message += ` • عدد القطع: ${numPieces}\n`;
+            message += ` • عدد القطع الكلي: ${numPieces}\n`;
             message += ` • سعر المنتجات: ${productsPrice.toLocaleString()} جنيه\n`;
             message += ` • رسوم الشحن: ${shippingCost.toLocaleString()} جنيه\n`;
             message += ` • الإجمالي: ${totalPrice.toLocaleString()} جنيه\n\n`;
@@ -1333,7 +1336,7 @@
             const whatsappUrl = `https://wa.me/201558782200?text=${encodeURIComponent(message)}`;
 
             fbq('track', 'Purchase', {
-                content_name: selectedModel.name,
+                content_name: contentNames.join(', '),
                 content_category: 'furniture',
                 value: totalPrice,
                 currency: 'EGP',
@@ -1343,7 +1346,7 @@
             window.open(whatsappUrl, '_blank');
         });
 
-        // Initialize total bill on load
+        // Initialize on load
         updateTotalBill();
     </script>
 </body>
