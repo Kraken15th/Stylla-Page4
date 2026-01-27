@@ -37,10 +37,7 @@
             background: linear-gradient(135deg, #130909 0%, #740404 100%);
         }
 
-        /* تم التعديل هنا: استخدام cover لملء البطاقة مع الحفاظ على وضوح الصورة */
-        img {
-            object-fit: cover !important;
-        }
+
 
 
         .color-box {
@@ -435,6 +432,46 @@
             <p class="text-xl font-bold">استعد لعزومات رمضان مع اطقمنا المتنوعة بأسعار تبدأ من 13000 جنيه!</p>
         </div>
 
+        <!-- Why Stylla Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12">
+                    لماذا تختار <span class="text-[#740404]">أثاث ستايلا</span>؟
+                </h2>
+
+                <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6">
+
+                    <!-- Card -->
+                    <div
+                        class="mt-4 text-center min-w-[85%] md:min-w-[45%] lg:min-w-[30%] snap-center bg-gradient-to-br from-[#740404] to-[#a30606] text-white rounded-3xl overflow-hidden shadow-xl">
+                        <img src="assets/details1.jpeg" class="h-64 w-full object-contain">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">جودة Heavy Duty</h3>
+                            <p class="text-white/80">خشب ومعدن قوي – تحمل عالي – عمر طويل</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="mt-4 text-center min-w-[85%] md:min-w-[45%] lg:min-w-[30%] snap-center bg-gradient-to-br from-[#2b0202] to-[#740404] text-white rounded-3xl overflow-hidden shadow-xl">
+                        <img src="assets/details2.jpeg" class="h-64 w-full object-contain">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">اشتري ووفر مع Marvel Steel… منتج يعيش معاك</h3>
+
+                        </div>
+                    </div>
+
+                    <div
+                        class="mt-4 text-center min-w-[85%] md:min-w-[45%] lg:min-w-[30%] snap-center bg-gradient-to-br from-[#130909] to-[#2b0202] text-white rounded-3xl overflow-hidden shadow-xl">
+                        <img src="assets/details3.jpeg" class="h-64 w-full object-contain">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">توصيل وتركيب وسرعة في التسليم</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <section class="mb-16">
             <div class="text-center mb-10">
                 <h2 class="text-4xl font-bold text-gray-800 mb-3">اختار الطقم والألوان المناسبة لذوقك</h2>
@@ -442,40 +479,368 @@
                 </h2>
             </div>
 
-            <div class="vertical-scroll grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="scroll-item category-card rounded-2xl shadow-xl overflow-hidden cursor-pointer"
-                    onclick="selectCategory('model9', this, 9, 23000)">
-                    <div class="bg-gradient-to-br from-pink-100 to-pink-200 h-48 overflow-hidden">
-                        <img src="assets/9ps.jpeg" alt="Model 1" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 bg-white">
-                        <h3 class="text-xl font-bold text-gray-800 text-center mb-2">طقم 9 أفراد</h3>
-                        <p class="mb-2 text-center mt-3 text-gray-700 font-semibold">( كنبة ٣ مقاعد - كنبة مقعدين - 2
-                            كرسي -
-                            2
-                            بف - طاولة كبيرة )</p>
-                        <div class="price-tag text-center">23,000 جنيه</div>
-                    </div>
-                </div>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
 
-            <div class="vertical-scroll grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="scroll-item category-card rounded-2xl shadow-xl overflow-hidden cursor-pointer"
+                <!-- Card 1 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('model9', this, 9, 23000)">
-                    <div class="bg-gradient-to-br from-pink-100 to-pink-200 h-48 overflow-hidden">
-                        <img src="assets/9ps.jpeg" alt="Model 1" class="w-full h-full object-cover">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/9ps.jpeg" alt="Model 9"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
-                    <div class="p-4 bg-white">
-                        <h3 class="text-xl font-bold text-gray-800 text-center mb-2">طقم 9 أفراد</h3>
-                        <p class="mb-2 text-center mt-3 text-gray-700 font-semibold">( كنبة ٣ مقاعد - كنبة مقعدين - 2
-                            كرسي -
-                            2
-                            بف - طاولة كبيرة )</p>
-                        <div class="price-tag text-center">23,000 جنيه</div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">طقم 9 أفراد</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">كنبة ٣ مقاعد - كنبة
+                            مقعدين - 2 كرسي - 2 بف - طاولة كبيرة</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-9"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 23000)">
+                            <label for="glass-9" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            23,000 جنيه
+                        </div>
                     </div>
                 </div>
+
+                <!-- Card 2 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('model8', this, 8, 23000)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/8ps.jpeg" alt="Model 8"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">سفرة 8 أفراد</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">طاولة 220 في 90 سم</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-8"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 23000)">
+                            <label for="glass-8" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            23,000 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('ركنة 2*2.5', this, 5, 24000)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/rokna2.jpeg" alt="Rokna 2"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">ركنة 2*2.5</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">ركنة مترين في مترين ونص +
+                            2 كرسي فوتيه + 2 بف + طاولة كبيرة</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-rokna2"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 24000)">
+                            <label for="glass-rokna2"
+                                class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            24,000 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('ركنة230', this, 5, 18000)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/rokna230.jpeg" alt="Rokna 230"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">ركنة 230</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">ركنة 230 في 230 سم +
+                            طاولة شاي</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-rokna230"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 18000)">
+                            <label for="glass-rokna230"
+                                class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            18,000 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('بالميرا 6', this, 6, 16000)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/6ps.jpeg" alt="Palmira 6"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">طقم بالميرا 6 افراد</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">كنبة مقعدين + 4 كراسي +
+                            طاولة شاي</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-6"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 16000)">
+                            <label for="glass-6" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            16,000 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('سفرة دبار 8', this, 8, 18000)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/8psdobar.jpeg" alt="Dobar 8"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">سفرة دبار 8 افراد</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">طاولة 200 في 90 سم + 8
+                            كراسي</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-dobar8"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 18000)">
+                            <label for="glass-dobar8"
+                                class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            18,000 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('طقم 7 افراد', this, 7, 20000)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/7ps.jpeg" alt="Set 7"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">طقم 7 افراد</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">كنبة 3 افراد + كنبة فردين
+                            + 2 فوتيه + طاولة شاي</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-7"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 20000)">
+                            <label for="glass-7" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            20,000 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('طقم 5 افراد', this, 5, 15500)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/5ps.jpeg" alt="Set 5"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">طقم 5 افراد</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">كنبة 3 مقاعد + 2 كرسي
+                            فوتيه + ترابيزة خشب 70 في 70</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-5"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 15500)">
+                            <label for="glass-5" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            15,500 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('سفرة 6 كراسي', this, 6, 18500)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/table6.jpeg" alt="Table 6"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">سفرة 6 كراسي</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">طاولة 150 في 90 سم + 6
+                            كراسي</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-table6"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 18500)">
+                            <label for="glass-table6"
+                                class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            18,500 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('سفرة 6 افراد كراسي دبار', this, 6, 14000)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/table6dobar.jpeg" alt="Table 6 Dobar"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">سفرة 6 افراد </h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">طاولة 150 في 90 سم + 6
+                            كراسي</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-dobar6"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 14000)">
+                            <label for="glass-dobar6"
+                                class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            14,000 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 11 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('طقم 7 افراد سمبل', this, 7, 13800)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/7pssimple.jpeg" alt="Set 7 Simple"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">طقم 7 افراد سمبل</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">2 كنبة صغيرة + 3 كراسي +
+                            طاولة صغيرة</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-7simple"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                onchange="updateCardPrice(this, 13800)">
+                            <label for="glass-7simple"
+                                class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٣٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            13,800 جنيه
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
+
 
 
         <section class="mb-16">
@@ -489,9 +854,9 @@
                 <div class="scroll-item">
                     <div
                         class="product-img bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-64 shadow-lg overflow-hidden">
-                        <img src="assets/product.jpeg" alt="Gallery 1" class="w-full h-full object-cover">
+                        <img src="assets/delivery1.jpeg" alt="Gallery 1" class="w-full h-full object-contain">
                     </div>
-                    <p class="text-center mt-3 text-gray-700 font-semibold">استمتع معنا بعرض Stylla 2026
+                    <p class="text-center mt-3 text-gray-700 font-semibold">استمتع معنا بعرض شهر رمضان
                     </p>
                     <p class="text-center mt-3 text-gray-700 font-semibold">لفترة محدودة
                     </p>
@@ -500,7 +865,7 @@
                 <div class="scroll-item">
                     <div
                         class="product-img bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-64 shadow-lg overflow-hidden">
-                        <img src="assets/Size.jpeg" alt="Gallery 2" class="w-full h-full object-cover">
+                        <img src="assets/delivery2.jpeg" alt="Gallery 2" class="w-full h-full object-contain">
                     </div>
                     <p class="text-center mt-3 text-gray-700 font-semibold">مقاسات مريحة ومناسبة للغاية</p>
 
@@ -510,7 +875,7 @@
                 <div class="scroll-item">
                     <div
                         class="product-img bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-64 shadow-lg overflow-hidden">
-                        <img src="assets/water.jpeg" alt="Gallery 3" class="w-full h-full object-cover">
+                        <img src="assets/delivery3.jpeg" alt="Gallery 3" class="w-full h-full object-contain">
                     </div>
                     <p class="text-center mt-3 text-gray-700 font-semibold">قماش ووتربروف مضاد للماء</p>
                 </div>
@@ -518,15 +883,15 @@
                 <div class="scroll-item">
                     <div
                         class="product-img bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-64 shadow-lg overflow-hidden">
-                        <img src="assets/handle.jpeg" alt="Gallery 4" class="w-full h-full object-cover">
+                        <img src="assets/delivery5.jpeg" alt="Gallery 4" class="w-full h-full object-contain">
                     </div>
-                    <p class="text-center mt-3 text-gray-700 font-semibold">يد انسيابية من الخشب الطبيعي</p>
+                    <p class="text-center mt-3 text-gray-700 font-semibold">خامات ذات جودة عالية واثاث يعيش معاك</p>
                 </div>
 
                 <div class="scroll-item">
                     <div
                         class="product-img bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-64 shadow-lg overflow-hidden">
-                        <img src="assets/Catalog.jpeg" alt="Gallery 5" class="w-full h-full object-cover">
+                        <img src="assets/delivery4.jpeg" alt="Gallery 5" class="w-full h-full object-contain">
                     </div>
                     <p class="text-center mt-3 text-gray-700 font-semibold">استرخاء بلا حدود، ولحظات عائلية لا تُنسى</p>
                 </div>
@@ -605,8 +970,8 @@
                                 <p class="text-sm mt-3 font-semibold text-gray-700">فيروزي</p>
                             </div>
                             <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #3DD5C6;"
-                                    onclick="selectColor('pillow', '#3DD5C6', 'تركواز', this, 1)"></div>
+                                <div class="color-box mx-auto" style="background-color: #126666;"
+                                    onclick="selectColor('pillow', '#126666', 'تركواز', this, 1)"></div>
                                 <p class="text-sm mt-3 font-semibold text-gray-700">تركواز</p>
                             </div>
                         </div>
@@ -750,7 +1115,7 @@
         let product1PillowColorName = '';
 
 
-        function selectCategory(category, element, pieces, price) {
+        function selectCategory(category, element, pieces, basePrice) {
             // Deselect all cards first
             document.querySelectorAll('.category-card').forEach(card => {
                 card.classList.remove('selected');
@@ -759,12 +1124,40 @@
             // Select the current card
             element.classList.add('selected');
 
+            // Check if glass is selected
+            const glassCheckbox = element.querySelector('.glass-checkbox');
+            const hasGlass = glassCheckbox ? glassCheckbox.checked : false;
+
             // Update the selected model state
             selectedModel.name = category;
             selectedModel.pieces = pieces;
-            selectedModel.price = price;
+            selectedModel.basePrice = basePrice;
+            selectedModel.hasGlass = hasGlass;
+            selectedModel.price = basePrice + (hasGlass ? 1300 : 0);
 
             updateTotalBill();
+        }
+
+        function updateCardPrice(checkbox, basePrice) {
+            const hasGlass = checkbox.checked;
+            const finalPrice = basePrice + (hasGlass ? 1300 : 0);
+
+            // Find parent wrapper or card to locate the price tag
+            // The structure is input -> div -> div(p-6) -> div.price-tag
+            const cardBody = checkbox.closest('.category-card');
+            if (cardBody) {
+                const priceTag = cardBody.querySelector('.price-tag');
+                if (priceTag) {
+                    priceTag.textContent = finalPrice.toLocaleString() + ' جنيه';
+                }
+
+                // If this card is currently selected, align the global state immediately
+                if (cardBody.classList.contains('selected')) {
+                    selectedModel.hasGlass = hasGlass;
+                    selectedModel.price = finalPrice;
+                    updateTotalBill();
+                }
+            }
         }
 
         function selectColor(type, color, colorName, element, productNum) {
@@ -893,6 +1286,9 @@
             }
             if (product1PillowColorName) {
                 message += ` • لون القماش والوسائد: ${product1PillowColorName}\n`;
+            }
+            if (selectedModel.hasGlass) {
+                message += ` • اضافة: زجاج للطاولة (+1,300 جنيه)\n`;
             }
 
             message += ` *بيانات العميل:*\n`;
