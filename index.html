@@ -354,10 +354,19 @@
             }
         }
 
-        /* Keep hero content above decorations */
+    /* Keep hero content above decorations */
         .hero-gradient>.container {
             position: relative;
             z-index: 5;
+        }
+
+        /* New Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
     </style>
 </head>
@@ -907,75 +916,12 @@
                     <p class="text-gray-600 text-lg">اختر الألوان التي تناسب ذوقك</p>
                 </div>
 
-                <div id="product1Colors">
-                    <div class="mb-12">
-                        <h4 class="text-xl font-bold text-gray-700 mb-6 flex items-center gap-3">
-                            <span class="text-3xl">🔩</span>
-                            لون الإطار المعدني
-                        </h4>
-                        <div class="flex gap-6 flex-wrap justify-center">
-                            <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #000000;"
-                                    onclick="selectColor('metal', '#000000', 'أسود', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">أسود</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #8D8D8D;"
-                                    onclick="selectColor('metal', '#36454F', 'رمادي داكن', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">رصاصي</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-box mx-auto"
-                                    style="background-color: #FFFFFF; border: 2px solid #e0e0e0;"
-                                    onclick="selectColor('metal', '#FFFFFF', 'أبيض', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">أبيض</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-8">
-                        <h4 class="text-xl font-bold text-gray-700 mb-6 flex items-center gap-3">
-                            <span class="text-3xl">🛋️</span>
-                            لون القماش والوسائد
-                        </h4>
-                        <div class="flex gap-6 flex-wrap justify-center">
-                            <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #8D8D8D;"
-                                    onclick="selectColor('pillow', '#808080', 'رصاصي', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">رصاصي</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #FFFFFF;"
-                                    onclick="selectColor('pillow', '#FFFFFF', 'اوف وايت', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">اوف وايت</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #EDE4DA;"
-                                    onclick="selectColor('pillow', '#EDE4DA', 'بيج', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">بيج</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #B9947D;"
-                                    onclick="selectColor('pillow', '#B9947D', 'كافيه', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">كافيه</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #0138AA;"
-                                    onclick="selectColor('pillow', '#0138AA', 'أزرق', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">أزرق</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #4DCDE9;"
-                                    onclick="selectColor('pillow', '#4DCDE9', 'فيروزي', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">فيروزي</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="color-box mx-auto" style="background-color: #126666;"
-                                    onclick="selectColor('pillow', '#126666', 'تركواز', this, 1)"></div>
-                                <p class="text-sm mt-3 font-semibold text-gray-700">تركواز</p>
-                            </div>
-                        </div>
-                    </div>
+                <div id="dynamicColorsContainer" class="space-y-8 min-h-[100px] transition-all duration-300">
+                    <!-- Colors will be dynamically inserted here -->
+                    <p
+                        class="text-center text-gray-500 font-medium py-10 bg-gray-50/50 rounded-2xl border-2 border-dashed border-gray-200">
+                        الرجاء اختيار طقم من الأعلى لإظهار الألوان المتاحة
+                    </p>
                 </div>
             </div>
         </section>
@@ -1101,24 +1047,34 @@
     </footer>
 
     <script>
-        // Product 1 selections (Global selection for colors)
-        let product1MetalColor = '';
-        let product1MetalColorName = '';
-        let product1PillowColor = '';
-        let product1PillowColorName = '';
+        // Color Definitions
+        const metalColors = [
+            { val: '#000000', bg: '#000000', name: 'أسود' },
+            { val: '#36454F', bg: '#8D8D8D', name: 'رمادي داكن' },
+            { val: '#FFFFFF', bg: '#FFFFFF', name: 'أبيض', border: true }
+        ];
 
+        const pillowColors = [
+            { val: '#808080', bg: '#8D8D8D', name: 'رصاصي' },
+            { val: '#FFFFFF', bg: '#FFFFFF', name: 'اوف وايت' },
+            { val: '#EDE4DA', bg: '#EDE4DA', name: 'بيج' },
+            { val: '#B9947D', bg: '#B9947D', name: 'كافيه' },
+            { val: '#0138AA', bg: '#0138AA', name: 'أزرق' },
+            { val: '#4DCDE9', bg: '#4DCDE9', name: 'فيروزي' },
+            { val: '#126666', bg: '#126666', name: 'تركواز' }
+        ];
 
         function selectCategory(category, element, pieces, basePrice) {
             // Toggle selection state
             element.classList.toggle('selected');
 
-            // Store metadata on the element so we can read it later without parsing HTML args
-            // We only need to set this once, but setting it every click is harmless and ensures it's there
+            // Store metadata on the element
             element.dataset.name = category;
             element.dataset.pieces = pieces;
             element.dataset.basePrice = basePrice;
 
             updateTotalBill();
+            renderColorSections();
         }
 
         function updateCardPrice(checkbox, basePrice) {
@@ -1148,37 +1104,101 @@
             }
         }
 
-        function selectColor(type, color, colorName, element, productNum) {
-            // The productNum is always 1 now, but keeping the argument for cleaner function use
-            const parentSection = element.closest('#product1Colors');
+        function renderColorSections() {
+            const container = document.getElementById('dynamicColorsContainer');
+            const selectedCards = document.querySelectorAll('.category-card.selected');
 
-            if (type === 'metal') {
-                parentSection.querySelectorAll('.color-box').forEach(box => {
-                    const parent = box.closest('div').parentElement.parentElement.parentElement;
-                    if (parent && parent.querySelector('h4') && parent.querySelector('h4').textContent.includes('المعدني')) {
-                        box.classList.remove('selected');
+            if (selectedCards.length === 0) {
+                container.innerHTML = '<p class="text-center text-gray-500 font-medium py-10 bg-gray-50/50 rounded-2xl border-2 border-dashed border-gray-200">الرجاء اختيار طقم لإظهار الألوان المتاحة</p>';
+                return;
+            }
+
+            container.innerHTML = '';
+
+            selectedCards.forEach((card, index) => {
+                const productName = card.dataset.name;
+                const currentMetal = card.dataset.metalColor || '';
+                const currentPillow = card.dataset.pillowColor || '';
+
+                // Determine if we need to show colors for this item? 
+                // Currently showing for all selected items as requested.
+
+                // Escape name for onclick string injection
+                const escapedName = productName.replace(/'/g, "\\'");
+
+                let html = `
+                    <div class="product-color-group border-b border-gray-200 pb-10 mb-8 last:border-0 last:pb-0 last:mb-0 animate-fade-in">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center text-purple-800 bg-purple-50 py-2 rounded-lg inline-block px-6 mx-auto block w-fit">
+                             🎨 ألوان: ${productName}
+                        </h3>
+                        
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold text-gray-700 mb-4 flex items-center justify-center gap-2">
+                                <span>🔩</span> لون الإطار المعدني
+                            </h4>
+                            <div class="flex gap-4 flex-wrap justify-center">
+                                ${metalColors.map(c => `
+                                    <div class="text-center cursor-pointer group"
+                                         onclick="selectColor('metal', '${c.val}', '${c.name}', this, '${escapedName}')">
+                                        <div class="color-box mx-auto ${currentMetal === c.val ? 'selected' : ''}" 
+                                             style="background-color: ${c.bg}; ${c.border ? 'border: 2px solid #e0e0e0;' : 'border: 2px solid transparent;'}"></div>
+                                        <p class="text-sm mt-2 font-semibold text-gray-600 group-hover:text-purple-600 transition">${c.name}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div>
+                             <h4 class="text-xl font-bold text-gray-700 mb-4 flex items-center justify-center gap-2">
+                                <span>🛋️</span> لون القماش والوسائد
+                            </h4>
+                            <div class="flex gap-4 flex-wrap justify-center">
+                                ${pillowColors.map(c => `
+                                    <div class="text-center cursor-pointer group"
+                                         onclick="selectColor('pillow', '${c.val}', '${c.name}', this, '${escapedName}')">
+                                        <div class="color-box mx-auto ${currentPillow === c.val ? 'selected' : ''}" 
+                                             style="background-color: ${c.bg}; border: 2px solid transparent;"></div>
+                                        <p class="text-sm mt-2 font-semibold text-gray-600 group-hover:text-purple-600 transition">${c.name}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function selectColor(type, color, colorName, containerDiv, productName) {
+            // Update UI
+            const parentFlex = containerDiv.parentElement;
+
+            // Remove selected from siblings
+            Array.from(parentFlex.children).forEach(child => {
+                const box = child.querySelector('.color-box');
+                if (box) box.classList.remove('selected');
+            });
+
+            // Add selected to clicked
+            const box = containerDiv.querySelector('.color-box');
+            if (box) box.classList.add('selected');
+
+            // Update State in Card Dataset
+            const cards = document.querySelectorAll('.category-card');
+            for (let card of cards) {
+                if (card.dataset.name === productName) {
+                    if (type === 'metal') {
+                        card.dataset.metalColor = color;
+                        card.dataset.metalName = colorName;
+                        if (typeof fbq === 'function') fbq('track', 'CustomizeProduct', { content_type: 'metal_color', content_name: productName, value: colorName });
+                    } else {
+                        card.dataset.pillowColor = color;
+                        card.dataset.pillowName = colorName;
+                        if (typeof fbq === 'function') fbq('track', 'CustomizeProduct', { content_type: 'pillow_color', content_name: productName, value: colorName });
                     }
-                });
-
-                product1MetalColor = color;
-                product1MetalColorName = colorName;
-
-                element.classList.add('selected');
-                fbq('track', 'CustomizeProduct', { content_type: 'metal_color_product1', value: colorName });
-
-            } else if (type === 'pillow') {
-                parentSection.querySelectorAll('.color-box').forEach(box => {
-                    const parent = box.closest('div').parentElement.parentElement.parentElement;
-                    if (parent && parent.querySelector('h4') && parent.querySelector('h4').textContent.includes('القماش')) {
-                        box.classList.remove('selected');
-                    }
-                });
-
-                product1PillowColor = color;
-                product1PillowColorName = colorName;
-
-                element.classList.add('selected');
-                fbq('track', 'CustomizeProduct', { content_type: 'pillow_color_product1', value: colorName });
+                    // Break is generally safe if names are unique, which they seem to be.
+                    break;
+                }
             }
         }
 
@@ -1297,20 +1317,18 @@
                 if (hasGlass) {
                     message += `    - مع زجاج (+${glassPrice.toLocaleString()} جنيه)\n`;
                 }
+
+                if (card.dataset.metalName) {
+                    message += `    - لون الإطار: ${card.dataset.metalName}\n`;
+                }
+                if (card.dataset.pillowName) {
+                    message += `    - لون القماش: ${card.dataset.pillowName}\n`;
+                }
+                message += `\n`;
             });
             message += `\n`;
 
-            // إضافة تفاصيل الألوان إذا تم اختيارها (Global colors)
-            if (product1MetalColorName || product1PillowColorName) {
-                message += ` *تخصيص الألوان (للمنتجات القابلة للتخصيص):*\n`;
-                if (product1MetalColorName) {
-                    message += ` • لون الإطار المعدني: ${product1MetalColorName}\n`;
-                }
-                if (product1PillowColorName) {
-                    message += ` • لون القماش والوسائد: ${product1PillowColorName}\n`;
-                }
-                message += `\n`;
-            }
+
 
             message += ` *بيانات العميل:*\n`;
             message += ` • الاسم الكامل: ${fullName}\n`;
@@ -1348,6 +1366,7 @@
 
         // Initialize on load
         updateTotalBill();
+        renderColorSections();
     </script>
 </body>
 
