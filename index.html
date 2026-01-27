@@ -446,7 +446,7 @@
                         class="mt-4 text-center min-w-[85%] md:min-w-[45%] lg:min-w-[30%] snap-center bg-gradient-to-br from-[#740404] to-[#a30606] text-white rounded-3xl overflow-hidden shadow-xl">
                         <img src="assets/details1.jpeg" class="h-64 w-full object-contain">
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">جودة Heavy Duty</h3>
+                            <h3 class="text-xl font-bold mb-2">جودة لا تقارن</h3>
                             <p class="text-white/80">خشب ومعدن قوي – تحمل عالي – عمر طويل</p>
                         </div>
                     </div>
@@ -455,7 +455,7 @@
                         class="mt-4 text-center min-w-[85%] md:min-w-[45%] lg:min-w-[30%] snap-center bg-gradient-to-br from-[#2b0202] to-[#740404] text-white rounded-3xl overflow-hidden shadow-xl">
                         <img src="assets/details2.jpeg" class="h-64 w-full object-contain">
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">اشتري ووفر مع Marvel Steel… منتج يعيش معاك</h3>
+                            <h3 class="text-xl font-bold mb-2">اشتري ووفر مع Stylla Outdoor... منتج يعيش معاك</h3>
 
                         </div>
                     </div>
@@ -579,7 +579,7 @@
 
                 <!-- Card 4 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
-                    onclick="selectCategory('ركنة230', this, 5, 18000)">
+                    onclick="selectCategory('ركنة بجوانب خشبية 230 سم', this, 5, 18000)">
                     <div class="relative h-64 overflow-hidden group">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -596,10 +596,10 @@
                             onclick="event.stopPropagation()">
                             <input type="checkbox" id="glass-rokna230"
                                 class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
-                                onchange="updateCardPrice(this, 18000)">
+                                data-glass-price="500" onchange="updateCardPrice(this, 18000)">
                             <label for="glass-rokna230"
                                 class="text-gray-800 font-bold text-sm cursor-pointer select-none">
-                                اضافة زجاج ١٣٠٠ جنيه
+                                اضافة زجاج ٥٠٠ جنيه
                             </label>
                         </div>
 
@@ -629,9 +629,9 @@
                             onclick="event.stopPropagation()">
                             <input type="checkbox" id="glass-6"
                                 class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
-                                onchange="updateCardPrice(this, 16000)">
+                                data-glass-price="500" onchange="updateCardPrice(this, 16000)">
                             <label for="glass-6" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
-                                اضافة زجاج ١٣٠٠ جنيه
+                                اضافة زجاج ٥٠٠ جنيه
                             </label>
                         </div>
 
@@ -694,9 +694,9 @@
                             onclick="event.stopPropagation()">
                             <input type="checkbox" id="glass-7"
                                 class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
-                                onchange="updateCardPrice(this, 20000)">
+                                data-glass-price="500" onchange="updateCardPrice(this, 20000)">
                             <label for="glass-7" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
-                                اضافة زجاج ١٣٠٠ جنيه
+                                اضافة زجاج ٥٠٠ جنيه
                             </label>
                         </div>
 
@@ -726,9 +726,9 @@
                             onclick="event.stopPropagation()">
                             <input type="checkbox" id="glass-5"
                                 class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
-                                onchange="updateCardPrice(this, 15500)">
+                                data-glass-price="500" onchange="updateCardPrice(this, 15500)">
                             <label for="glass-5" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
-                                اضافة زجاج ١٣٠٠ جنيه
+                                اضافة زجاج ٥٠٠ جنيه
                             </label>
                         </div>
 
@@ -824,10 +824,10 @@
                             onclick="event.stopPropagation()">
                             <input type="checkbox" id="glass-7simple"
                                 class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
-                                onchange="updateCardPrice(this, 13800)">
+                                data-glass-price="500" onchange="updateCardPrice(this, 13800)">
                             <label for="glass-7simple"
                                 class="text-gray-800 font-bold text-sm cursor-pointer select-none">
-                                اضافة زجاج ١٣٠٠ جنيه
+                                اضافة زجاج ٥٠٠ جنيه
                             </label>
                         </div>
 
@@ -1105,7 +1105,10 @@
         let selectedModel = {
             name: '', // e.g., 'model1', 'model2', 'model3'
             pieces: 0,
-            price: 0
+            price: 0,
+            basePrice: 0,
+            hasGlass: false,
+            glassPrice: 1300
         };
 
         // Product 1 selections (now for the ONE selected model)
@@ -1128,19 +1131,33 @@
             const glassCheckbox = element.querySelector('.glass-checkbox');
             const hasGlass = glassCheckbox ? glassCheckbox.checked : false;
 
+            // Get glass price from attribute, default to 1300
+            let glassPrice = 1300;
+            if (glassCheckbox && glassCheckbox.dataset.glassPrice) {
+                glassPrice = parseInt(glassCheckbox.dataset.glassPrice);
+            }
+
             // Update the selected model state
             selectedModel.name = category;
             selectedModel.pieces = pieces;
             selectedModel.basePrice = basePrice;
             selectedModel.hasGlass = hasGlass;
-            selectedModel.price = basePrice + (hasGlass ? 1300 : 0);
+            selectedModel.glassPrice = glassPrice;
+            selectedModel.price = basePrice + (hasGlass ? glassPrice : 0);
 
             updateTotalBill();
         }
 
         function updateCardPrice(checkbox, basePrice) {
             const hasGlass = checkbox.checked;
-            const finalPrice = basePrice + (hasGlass ? 1300 : 0);
+
+            // Get glass price from attribute, default to 1300
+            let glassPrice = 1300;
+            if (checkbox.dataset.glassPrice) {
+                glassPrice = parseInt(checkbox.dataset.glassPrice);
+            }
+
+            const finalPrice = basePrice + (hasGlass ? glassPrice : 0);
 
             // Find parent wrapper or card to locate the price tag
             // The structure is input -> div -> div(p-6) -> div.price-tag
@@ -1154,6 +1171,7 @@
                 // If this card is currently selected, align the global state immediately
                 if (cardBody.classList.contains('selected')) {
                     selectedModel.hasGlass = hasGlass;
+                    selectedModel.glassPrice = glassPrice;
                     selectedModel.price = finalPrice;
                     updateTotalBill();
                 }
@@ -1288,7 +1306,7 @@
                 message += ` • لون القماش والوسائد: ${product1PillowColorName}\n`;
             }
             if (selectedModel.hasGlass) {
-                message += ` • اضافة: زجاج للطاولة (+1,300 جنيه)\n`;
+                message += ` • اضافة: زجاج للطاولة (+${selectedModel.glassPrice.toLocaleString()} جنيه)\n`;
             }
 
             message += ` *بيانات العميل:*\n`;
