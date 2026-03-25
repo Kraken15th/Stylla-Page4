@@ -522,9 +522,9 @@
             <h1 class="text-5xl md:text-6xl tracking-tight mb-3 font-[Galada] hero-float">
                 Stylla Outdoor
             </h1>
-            <p class="text-xl md:text-2xl font-light mb-6">عروض الصيف المميزة ☀️</p>
+            <p class="text-xl md:text-2xl font-bold mb-6">عروض الصيف المميزة ☀️</p>
 
-            <p class="text-xl md:text-2xl font-light mb-6">Summer Collection 2026 ☀️</p>
+            <p class="text-xl md:text-2xl font-bold mb-6">Summer Collection 2026 ☀️</p>
 
             <div class="timer-box inline-block rounded-2xl px-8 py-4 shadow-2xl">
                 <p class="text-sm font-semibold mb-2"> العرض مستمر</p>
@@ -558,7 +558,7 @@
         <section class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12">
-                    لماذا تختار <span class="text-[#740404]">أثاث ستايلا</span>؟
+                    لماذا تختار <span class="text-[#740404]">Stylla Outdoor</span>؟
                 </h2>
 
                 <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6">
@@ -637,6 +637,38 @@
 
                 <!-- Card 2 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('model9', this, 9, 24000)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/sofra9new.jpeg" alt="Model 9"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">طقم 9 أفراد</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">كنبة ٣ مقاعد - كنبة
+                            مقعدين - 2 كرسي - ترابيزة جانبية - 2 بف - طاولة كبيرة</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-9"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                data-glass-price="1600" onchange="updateCardPrice(this, 24000)">
+                            <label for="glass-9" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ١٦٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            24,000 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('model8', this, 8, 23000)">
                     <div class="relative h-64 overflow-hidden group">
                         <div
@@ -666,14 +698,14 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Card 4 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('ركنة 2*2.5', this, 5, 24000)">
                     <div class="relative h-64 overflow-hidden group">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <img src="assets/rokna2.jpeg" alt="Rokna 2"
+                        <img src="assets/rokna25.jpeg" alt="Rokna 2"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
@@ -699,7 +731,7 @@
                     </div>
                 </div>
 
-                <!-- Card 4 -->
+                <!-- Card 5 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('ركنة بجوانب خشبية 230 سم', this, 5, 18000)">
                     <div class="relative h-64 overflow-hidden group">
@@ -732,7 +764,7 @@
                     </div>
                 </div>
 
-                <!-- Card 5 -->
+                <!-- Card 6 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('بالميرا 6', this, 6, 16000)">
                     <div class="relative h-64 overflow-hidden group">
@@ -764,7 +796,39 @@
                     </div>
                 </div>
 
-                <!-- Card 6 -->
+                <!-- Card 7 -->
+                <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
+                    onclick="selectCategory('روفان 6', this, 6, 14500)">
+                    <div class="relative h-64 overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                        <img src="assets/rofal6.jpeg" alt="Palmira 6"
+                            class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 text-center mb-2">طقم روفان 6 افراد</h3>
+                        <p class="text-sm text-center text-gray-600 mb-4 h-16 overflow-hidden">كنبة مقعدين + 4 كراسي +
+                            طاولة شاي</p>
+
+                        <div class="flex items-center justify-center gap-2 mb-4 p-2 bg-pink-50 rounded-lg"
+                            onclick="event.stopPropagation()">
+                            <input type="checkbox" id="glass-6"
+                                class="w-5 h-5 text-pink-600 rounded focus:ring-pink-500 border-gray-300 transition cursor-pointer glass-checkbox"
+                                data-glass-price="500" onchange="updateCardPrice(this, 14500)">
+                            <label for="glass-6" class="text-gray-800 font-bold text-sm cursor-pointer select-none">
+                                اضافة زجاج ٥٠٠ جنيه
+                            </label>
+                        </div>
+
+                        <div
+                            class="price-tag text-center text-xl font-bold py-3 rounded-xl shadow-md transition-all duration-300">
+                            14,500 جنيه
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('سفرة دبار 8', this, 8, 18000)">
                     <div class="relative h-64 overflow-hidden group">
@@ -797,7 +861,7 @@
                     </div>
                 </div>
 
-                <!-- Card 7 -->
+                <!-- Card 9 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('طقم 7 افراد', this, 7, 20000)">
                     <div class="relative h-64 overflow-hidden group">
@@ -829,7 +893,7 @@
                     </div>
                 </div>
 
-                <!-- Card 8 -->
+                <!-- Card 10 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('طقم 5 افراد', this, 5, 15500)">
                     <div class="relative h-64 overflow-hidden group">
@@ -861,7 +925,7 @@
                     </div>
                 </div>
 
-                <!-- Card 9 -->
+                <!-- Card 11 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('سفرة 6 كراسي', this, 6, 18500)">
                     <div class="relative h-64 overflow-hidden group">
@@ -894,7 +958,7 @@
                     </div>
                 </div>
 
-                <!-- Card 10 -->
+                <!-- Card 12 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('سفرة 6 افراد كراسي دبار', this, 6, 14000)">
                     <div class="relative h-64 overflow-hidden group">
@@ -927,7 +991,7 @@
                     </div>
                 </div>
 
-                <!-- Card 11 -->
+                <!-- Card 13 -->
                 <div class="category-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl duration-300 border border-gray-100"
                     onclick="selectCategory('طقم 7 افراد سمبل', this, 7, 13800)">
                     <div class="relative h-64 overflow-hidden group">
