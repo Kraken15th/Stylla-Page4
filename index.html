@@ -199,174 +199,290 @@
         }
 
         /* ===========================
-   RAMADAN HERO DECORATIONS
+   SUMMER HERO DECORATIONS
 =========================== */
 
-        .ramadan-hero-decor {
+        /* Summer decoration container */
+        .summer-hero-decor {
             position: absolute;
             inset: 0;
             overflow: hidden;
             z-index: 1;
+            pointer-events: none;
         }
 
-        /* Golden stars */
-        .star {
+        /* Sun glow effect — top-right warm radial */
+        .sun-glow {
             position: absolute;
-            color: #d4af37;
-            font-size: 1.2rem;
-            opacity: 0.60;
-            animation: twinkle 4s ease-in-out infinite;
+            top: -20%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 180, 50, 0.12) 0%, rgba(255, 120, 20, 0.06) 40%, transparent 70%);
+            animation: sunPulse 6s ease-in-out infinite;
         }
 
-        .star-1 {
-            top: 10%;
+        @keyframes sunPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.08);
+                opacity: 1;
+            }
+        }
+
+        /* Floating warm light gradient orbs */
+        .light-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: orbFloat 10s ease-in-out infinite;
+        }
+
+        .light-orb-1 {
+            width: 200px;
+            height: 200px;
+            top: 20%;
             left: 5%;
+            background: rgba(255, 200, 100, 0.08);
             animation-delay: 0s;
         }
 
-        .star-2 {
-            top: 5%;
-            left: 35%;
-            animation-delay: 1.5s;
-        }
-
-        .star-3 {
-            top: 12%;
-            left: 70%;
+        .light-orb-2 {
+            width: 160px;
+            height: 160px;
+            bottom: 15%;
+            right: 8%;
+            background: rgba(255, 160, 60, 0.07);
             animation-delay: 3s;
         }
 
-        .star-4 {
-            top: 8%;
-            left: 95%;
-            animation-delay: 1s;
-        }
-
-        .star-5 {
-            top: 30%;
-            left: 10%;
-            animation-delay: 2.5s;
-        }
-
-        .star-6 {
-            top: 25%;
-            left: 85%;
-            animation-delay: 0.5s;
-        }
-
-        .star-7 {
-            top: 45%;
-            left: 5%;
-            animation-delay: 4s;
-        }
-
-        .star-8 {
+        .light-orb-3 {
+            width: 120px;
+            height: 120px;
             top: 50%;
-            left: 92%;
-            animation-delay: 2s;
+            left: 60%;
+            background: rgba(255, 220, 150, 0.06);
+            animation-delay: 5s;
         }
 
-        .star-9 {
-            top: 65%;
-            left: 15%;
-            animation-delay: 1.2s;
-        }
-
-        .star-10 {
-            top: 60%;
-            left: 80%;
-            animation-delay: 3.5s;
-        }
-
-        .star-11 {
-            top: 85%;
-            left: 8%;
-            animation-delay: 0.8s;
-        }
-
-        .star-12 {
-            top: 80%;
-            left: 40%;
-            animation-delay: 2.8s;
-        }
-
-        .star-13 {
-            top: 75%;
-            left: 70%;
-            animation-delay: 1.8s;
-        }
-
-        .star-14 {
-            top: 90%;
-            left: 90%;
-            animation-delay: 4.2s;
-        }
-
-        .star-15 {
-            top: 40%;
-            left: 50%;
-            animation-delay: 2.2s;
-        }
-
-        @keyframes twinkle {
+        @keyframes orbFloat {
 
             0%,
             100% {
-                opacity: 0.2;
+                transform: translateY(0) translateX(0);
             }
 
-            50% {
-                opacity: 0.6;
+            33% {
+                transform: translateY(-12px) translateX(6px);
+            }
+
+            66% {
+                transform: translateY(8px) translateX(-4px);
             }
         }
 
-        /* Lanterns */
-        .lantern {
+        /* Soft wave shape — bottom of hero */
+        .summer-wave {
             position: absolute;
-            font-size: 2.5rem;
-            opacity: 0.25;
-            animation: lanternFloat 8s ease-in-out infinite;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            opacity: 0.08;
         }
 
-        .lantern-h-1 {
-            top: 10%;
-            left: 25%;
-            animation-delay: 0s;
+        .summer-wave svg {
+            width: 100%;
+            height: 100%;
         }
 
-        .lantern-h-2 {
-            top: 15%;
-            right: 20%;
-            animation-delay: 2s;
+        /* Palm silhouette — very low opacity */
+        .palm-silhouette {
+            position: absolute;
+            opacity: 0.04;
+            font-size: 6rem;
+            color: #fff;
         }
 
-        @keyframes lanternFloat {
+        .palm-1 {
+            bottom: 10%;
+            left: 3%;
+            transform: scaleX(-1);
+        }
+
+        .palm-2 {
+            bottom: 8%;
+            right: 3%;
+        }
+
+        /* Warm overlay gradient for hero */
+        .summer-warm-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 180, 80, 0.06) 0%, transparent 50%, rgba(255, 120, 40, 0.04) 100%);
+            z-index: 1;
+        }
+
+        /* Hero background glow animation */
+        .hero-gradient {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(255, 200, 120, 0.05) 0%, transparent 50%);
+            animation: heroGlow 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes heroGlow {
 
             0%,
             100% {
-                transform: translateY(0);
-                opacity: 0.60;
+                transform: translate(0, 0);
             }
 
             50% {
-                transform: translateY(12px);
-                opacity: 0.60;
+                transform: translate(2%, -1%);
             }
         }
 
-    /* Keep hero content above decorations */
+        /* Keep hero content above decorations */
         .hero-gradient>.container {
             position: relative;
             z-index: 5;
         }
 
-        /* New Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ===========================
+   PREMIUM MICRO-INTERACTIONS
+=========================== */
+
+        /* Soft hover glow on category cards */
+        .category-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+
+        .category-card:hover {
+            box-shadow: 0 20px 50px rgba(116, 4, 4, 0.12), 0 0 30px rgba(116, 4, 4, 0.05);
+        }
+
+        /* Soft glow on price tags on hover */
+        .category-card:hover .price-tag {
+            box-shadow: 0 6px 20px rgba(98, 2, 2, 0.25);
+        }
+
+        /* Smooth shadow transition for glass-effect sections */
+        .glass-effect {
+            transition: box-shadow 0.4s ease;
+        }
+
+        .glass-effect:hover {
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Product image soft lift */
+        .product-img {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+        }
+
+        .product-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Discount badge subtle shimmer */
+        .discount-badge {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discount-badge::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            50% {
+                left: 100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Soft blur accent for timer box */
+        .timer-box {
+            backdrop-filter: blur(4px);
+        }
+
+        /* Color box refined hover */
+        .color-box {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Form inputs subtle focus glow */
+        input:focus,
+        select:focus,
+        textarea:focus {
+            box-shadow: 0 0 0 4px rgba(116, 4, 4, 0.08);
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .animate-fade-in {
             animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Smooth floating animation for hero content */
+        @keyframes gentleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
+        .hero-float {
+            animation: gentleFloat 4s ease-in-out infinite;
         }
     </style>
 </head>
@@ -382,36 +498,33 @@
 
 
     <div class="hero-gradient text-white py-8 shadow-2xl">
-        <!-- Ramadan Hero Decorations -->
-        <div class="ramadan-hero-decor pointer-events-none">
-            <span class="star star-1">✦</span>
-            <span class="star star-2">✦</span>
-            <span class="star star-3">✦</span>
-            <span class="star star-4">✦</span>
-            <span class="star star-5">✦</span>
-            <span class="star star-6">✦</span>
-            <span class="star star-7">✦</span>
-            <span class="star star-8">✦</span>
-            <span class="star star-9">✦</span>
-            <span class="star star-10">✦</span>
-            <span class="star star-11">✦</span>
-            <span class="star star-12">✦</span>
-            <span class="star star-13">✦</span>
-            <span class="star star-14">✦</span>
-            <span class="star star-15">✦</span>
-
-
-            <span class="lantern lantern-h-1">🏮</span>
-            <span class="lantern lantern-h-2">🏮</span>
+        <!-- Summer Hero Decorations -->
+        <div class="summer-warm-overlay"></div>
+        <div class="summer-hero-decor">
+            <!-- Sun glow -->
+            <div class="sun-glow"></div>
+            <!-- Floating light gradient orbs -->
+            <div class="light-orb light-orb-1"></div>
+            <div class="light-orb light-orb-2"></div>
+            <div class="light-orb light-orb-3"></div>
+            <!-- Palm silhouettes -->
+            <span class="palm-silhouette palm-1">🌴</span>
+            <span class="palm-silhouette palm-2">🌴</span>
+            <!-- Soft wave shape at bottom -->
+            <div class="summer-wave">
+                <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="white">
+                    <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,20 1440,30 L1440,60 L0,60 Z"></path>
+                </svg>
+            </div>
         </div>
 
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-5xl md:text-6xl tracking-tight mb-3 font-[Galada]">
+            <h1 class="text-5xl md:text-6xl tracking-tight mb-3 font-[Galada] hero-float">
                 Stylla Outdoor
             </h1>
-            <p class="text-xl md:text-2xl font-light mb-6">عروض خاصة لشهر رمضان 🌙</p>
+            <p class="text-xl md:text-2xl font-light mb-6">عروض الصيف المميزة ☀️</p>
 
-            <p class="text-xl md:text-2xl font-light mb-6">Ramadan 2026 🌙</p>
+            <p class="text-xl md:text-2xl font-light mb-6">Summer Collection 2026 ☀️</p>
 
             <div class="timer-box inline-block rounded-2xl px-8 py-4 shadow-2xl">
                 <p class="text-sm font-semibold mb-2"> العرض مستمر</p>
@@ -437,8 +550,8 @@
 
     <div class="container mx-auto px-4 py-12 max-w-7xl">
         <div class="discount-badge text-white text-center py-6 px-4 rounded-2xl shadow-2xl mb-12">
-            <h3 class="text-3xl font-black mb-2">🌙 عروض شهر رمضان 🌙</h3>
-            <p class="text-xl font-bold">استعد لعزومات رمضان مع اطقمنا المتنوعة بأسعار تبدأ من 13000 جنيه!</p>
+            <h3 class="text-3xl font-black mb-2">☀️ عروض الصيف الحصرية ☀️</h3>
+            <p class="text-xl font-bold">استمتع بجلسات الصيف الخارجية مع اطقمنا المتنوعة بأسعار تبدأ من 13000 جنيه!</p>
         </div>
 
         <!-- Why Stylla Section -->
@@ -497,7 +610,7 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <img src="assets/9ps.jpeg" alt="Model 9"
+                        <img src="assets/sofra9.jpeg" alt="Model 9"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
@@ -529,7 +642,7 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <img src="assets/8ps.jpeg" alt="Model 8"
+                        <img src="assets/sofra8.jpeg" alt="Model 8"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
@@ -593,7 +706,7 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <img src="assets/rokna230.jpeg" alt="Rokna 230"
+                        <img src="assets/rokna2304.jpeg" alt="Rokna 230"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
@@ -626,7 +739,7 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <img src="assets/6ps.jpeg" alt="Palmira 6"
+                        <img src="assets/palmera6.jpeg" alt="Palmira 6"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
@@ -658,7 +771,7 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <img src="assets/8psdobar.jpeg" alt="Dobar 8"
+                        <img src="assets/sofra82.jpeg" alt="Dobar 8"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
@@ -691,7 +804,7 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <img src="assets/7ps.jpeg" alt="Set 7"
+                        <img src="assets/sofra7.jpeg" alt="Set 7"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
@@ -755,7 +868,7 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <img src="assets/table6.jpeg" alt="Table 6"
+                        <img src="assets/sofra6.jpeg" alt="Table 6"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
@@ -788,7 +901,7 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
-                        <img src="assets/table6dobar.jpeg" alt="Table 6 Dobar"
+                        <img src="assets/sofra62.jpeg" alt="Table 6 Dobar"
                             class="w-full h-full object-contain transform group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-6">
@@ -865,7 +978,7 @@
                         class="product-img bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-64 shadow-lg overflow-hidden">
                         <img src="assets/delivery1.jpeg" alt="Gallery 1" class="w-full h-full object-contain">
                     </div>
-                    <p class="text-center mt-3 text-gray-700 font-semibold">استمتع معنا بعرض شهر رمضان
+                    <p class="text-center mt-3 text-gray-700 font-semibold">استمتع بأجواء الصيف مع أثاث خارجي فاخر
                     </p>
                     <p class="text-center mt-3 text-gray-700 font-semibold">لفترة محدودة
                     </p>
